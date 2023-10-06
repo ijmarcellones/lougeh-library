@@ -1,15 +1,16 @@
 create table book_transaction
 (
-    id          serial
+    id                 serial
         primary key,
-    return_date date,
-    time_stamp  timestamp,
-    copy_number integer
-        constraint book_transaction_inventory_copy_number_fk
-            references inventory,
-    reader_id   integer
+    reader_return_date date,
+    reader_id          integer
         constraint fk_transaction_reader
-            references reader
+            references reader,
+    isbn               varchar(255)
+        constraint fk_booktransaction_book
+            references books,
+    book_return_date   date,
+    status             varchar(50)
 );
 
 alter table book_transaction

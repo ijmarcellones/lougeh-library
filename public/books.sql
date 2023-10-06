@@ -9,7 +9,11 @@ create table books
     shelf_location   varchar(255),
     category_id      integer
         constraint books_category_id_fk
-            references category
+            references category,
+    publisher_id     integer
+        constraint fk_book_publisher
+            references publisher,
+    copies           integer
 );
 
 alter table books
